@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
 <style>
+[hidden]{display:none!important}
 /* Layout: 12-column editorial grid, 1024px content column with 128px desktop gutters (Figma "content · 12 col"), single light theme taken from the portfolio's own design tokens. */
 :root{
   --bg:#ffffff; --surface:#f4f4f5; --surface-2:#ebebed; --fg:#0d0e11; --muted:#5b616d; --subtle:#868c97;
@@ -22,7 +23,7 @@
   --body:14px; --small:12px; --label:14px;
   color-scheme:light;
 }
-@media (min-width:720px){:root{--gutter:48px; --section:64px; --card-pad:32px; --display:52px; --display-lh:68px; --h1:34px; --h1-lh:52px; --h3:24px; --h3-lh:38px; --h4:18px; --h4-lh:28px; --h5:16px}}
+@media (min-width:720px){:root{--gutter:48px; --section:64px; --card-pad:32px; --display:52px; --display-lh:68px; --h1:34px; --h1-lh:52px; --h3:24px; --h3-lh:38px; --h4:18px; --h4-lh:28px; --h5:16px; --body:16px; --small:14px; --label:16px}}
 @media (min-width:1100px){:root{--gutter:128px; --display:64px; --display-lh:84px; --h1:40px; --h1-lh:64px; --h3:28px; --h3-lh:44px; --h4:20px; --h4-lh:32px}}
 
 *{box-sizing:border-box}
@@ -64,7 +65,7 @@ p{margin:0}
 .nav a:hover{border-color:var(--line-strong)}
 
 /* tags */
-.tag{display:inline-flex;align-self:flex-start;justify-self:start;align-items:center;padding:4px 12px;border-radius:999px;background:var(--surface-2);color:var(--muted);font-weight:600;font-size:var(--small)}
+.tag{display:inline-flex;align-self:flex-start;justify-self:start;align-items:center;padding:4px 12px;border-radius:999px;background:var(--surface-2);color:var(--muted);font-weight:600;font-size:var(--small);line-height:24px}
 .tag.on-grey{background:var(--bg)}
 
 /* grids */
@@ -132,7 +133,7 @@ a.card.contained:hover{border-color:var(--line-strong)}
 .resume .row{padding-block:24px}
 .resume .row:first-child{padding-top:24px;border-top:1px solid var(--line)}
 @media (min-width:720px){.resume .row{grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px}}
-.row .date{font-family:var(--serif);font-size:var(--h4);line-height:var(--h4-lh);color:var(--muted);font-variant-numeric:tabular-nums}
+.resume .date{font-family:var(--serif);font-size:var(--h4);line-height:var(--h4-lh);color:var(--muted);font-variant-numeric:tabular-nums}
 
 /* quote */
 .quote{border-left:2px solid var(--fg);padding-left:32px;display:grid;gap:16px;max-width:851px;margin-inline:auto}
@@ -149,6 +150,7 @@ a.card.contained:hover{border-color:var(--line-strong)}
 .flow li{display:flex;flex-direction:column;align-items:flex-start}
 .pill{border:1px solid var(--line-strong);border-radius:999px;padding:4px 16px;white-space:nowrap;background:var(--bg)}
 .pill.hl{border-color:var(--fg)}
+.pill.out{color:var(--subtle)}
 .conn{position:relative;width:1px;height:28px;background:var(--line-strong);margin-left:24px}
 .conn.dot::before,.conn.arrow::after{content:"";position:absolute;left:50%;transform:translateX(-50%)}
 .conn.dot::before{top:-4px;width:8px;height:8px;border-radius:50%;background:var(--fg)}
@@ -160,6 +162,7 @@ a.card.contained:hover{border-color:var(--line-strong)}
   .flow .start .line::after{content:"";position:absolute;right:0;top:-4px;width:8px;height:8px;border-radius:50%;background:var(--fg)}
   .flow ol{flex-direction:row;align-items:center;flex-wrap:nowrap;margin-top:30px}
   .flow li{flex-direction:row;align-items:center;flex:0 0 auto}
+  .flow li.grow{flex:1 1 auto}
   .conn{width:auto;min-width:40px;flex:1;height:1px;margin:0}
   .conn.dot::before{top:-4px;left:0;transform:none}
   .conn.arrow::after{bottom:auto;top:-5px;left:auto;right:0;transform:none;border:5px solid transparent;border-left:8px solid var(--fg);border-right:0}
@@ -213,7 +216,7 @@ figcaption{color:var(--muted);font-size:var(--small)}
 
 /* progress screens strip */
 .strip{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
-@media (max-width:719px){.strip{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}.strip::-webkit-scrollbar{display:none}.strip>*{flex:0 0 auto}}
+@media (max-width:719px){.strip{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}.strip::-webkit-scrollbar{display:none}.strip>*{flex:0 0 100%;scroll-snap-align:center;display:flex;justify-content:center;margin:0}.strip>* img{width:auto;max-width:100%;margin-inline:auto}}
 .strip-bar{display:none;margin:0 0 16px}
 @media (max-width:719px){.strip-bar{display:flex}}
 
@@ -239,7 +242,7 @@ figcaption{color:var(--muted);font-size:var(--small)}
 .copy.done .ic-ok{display:block}
 
 /* lightbox */
-.lb{position:fixed;inset:0;z-index:50;background:rgba(13,14,17,.92);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 12px) 12px calc(env(safe-area-inset-bottom,0px) + 12px);}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(13,14,17,.92);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 12px) 12px calc(env(safe-area-inset-bottom,0px) + 12px)}
 .lb .bar{display:flex;justify-content:space-between;align-items:center;color:var(--on-dark);gap:12px;padding-bottom:8px}
 .lb .bar span{font-size:14px;opacity:.8}
 .lb .ctl{background:transparent;color:var(--on-dark);border-color:rgba(255,255,255,.35)}
@@ -266,38 +269,216 @@ main{min-height:60vh}
 </header>
 <main id="main"></main>
 <footer class="site-footer" id="footer"></footer>
-
-<!-- Disable automatic lightbox opening: intercept clicks on .zoom and hide the lightbox element -->
-<script>
-(function(){
-  function stopZoomClicks(e){
-    try{
-      const z = e.target.closest && e.target.closest('.zoom');
-      if(z){
-        e.stopImmediatePropagation();
-        e.preventDefault();
-      }
-    }catch(_){/* ignore */}
-  }
-  // Capture phase listener to block the page's lightbox handler
-  document.addEventListener('click', stopZoomClicks, true);
-  // Ensure the lightbox element is hidden if present
-  function hideLb(){
-    const lb = document.getElementById('lb');
-    if(lb){ lb.hidden = true; lb.style.display = 'none'; }
-  }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hideLb); else hideLb();
-})();
-</script>
-
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
-  <div class="bar"><span id="lb-cap"></span><div style="display:flex;gap:8px"><button class="ctl" id="lb-zoom" type="button" aria-label="Toggle zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-4.35-4.35"/></svg></button><button class="ctl" id="lb-close" type="button" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div></div>
+  <div class="bar"><span id="lb-cap"></span><div style="display:flex;gap:8px"><button class="ctl" id="lb-zoom" type="button" aria-label="Toggle zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg></button><button class="ctl" id="lb-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div></div>
   <div class="view fit" id="lb-view"><img id="lb-img" alt=""></div>
 </div>
 
 <script>
-const IMG={"ill-ask-help":[1248,384],"ill-chat-structure":[1512,756],"ill-element-select":[888,684],"ill-error":[1248,1323],"ill-generating":[1254,996],"ill-locator-editor":[888,1020],"ill-manual-edit":[...]} // trimmed in editor
-// -- rest of the original script remains unchanged --
+const IMG={"ill-ask-help":[1248,384],"ill-chat-structure":[1512,756],"ill-element-select":[888,684],"ill-error":[1248,1323],"ill-generating":[1254,996],"ill-locator-editor":[888,1020],"ill-manual-edit":[888,384],"ill-navigation":[1128,528],"ill-simple-message":[1248,729],"ill-test-plan":[1248,1086],"ill-two-column":[1128,528],"ill-version":[1248,1875],"setup-cognitive":[1410,684],"setup-positive":[1410,684],"setup-progressive":[1410,684],"setup-why":[1410,684],"skill-blueprint":[3072,1023],"skill-flow-registration":[1389,744],"skill-flow-return":[1389,923],"skill-progress-1":[1143,3346],"skill-progress-2":[1143,3620],"skill-progress-3":[1143,3452],"wf-chat":[2000,1207],"wf-current":[2000,1207],"screen-1":[1928,1283]};
+const ICON={
+alert:'<path d="M12 22C17.52 22 22 17.52 22 12S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10Z"/><path d="M12 8v4M12 16h.01"/>',
+frown:'<path d="M12 22C17.52 22 22 17.52 22 12S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10Z"/><path d="M8 16c.91-1.21 2.36-2 4-2s3.09.79 4 2M8.5 9h.01M15.5 9h.01"/>',
+thumb:'<path d="M2 12.5c0-1.1.9-2 2-2 1.66 0 3 1.34 3 3v4c0 1.66-1.34 3-3 3-1.1 0-2-.9-2-2v-6Z"/><path d="M15.48 7.81l-.27.86c-.22.7-.32 1.05-.24 1.33.07.23.22.42.42.55.25.16.63.16 1.39.16h.4c2.57 0 3.86 0 4.47.76.06.08.13.18.18.27.47.85-.06 2-1.13 4.28-.97 2.1-1.46 3.15-2.36 3.77-.09.05-.18.11-.27.16-.95.55-2.13.55-4.49.55h-.52c-2.85 0-4.28 0-5.17-.86C7 18.78 7 17.39 7 14.62v-.97c0-1.46 0-2.18.26-2.85.26-.67.75-1.21 1.74-2.31l4.09-4.53c.1-.11.16-.17.2-.21.42-.37 1.08-.33 1.44.09.04.05.09.11.17.24.14.19.21.29.27.39.52.87.68 1.9.44 2.89-.03.11-.06.22-.13.45Z"/>',
+question:'<path d="M12 22C17.52 22 22 17.52 22 12S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10Z"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.91 2.06c-.68.47-1.41 1.11-1.41 1.94M12 16.75h.01"/>',
+trash:'<path d="M19.5 5.5l-.62 10.03c-.16 2.56-.24 3.84-.88 4.76-.32.45-.73.84-1.2 1.13-.96.58-2.24.58-4.81.58s-3.85 0-4.81-.59c-.48-.28-.88-.67-1.2-1.13-.64-.92-.72-2.2-.88-4.76L4.5 5.5"/><path d="M3 5.5h18M16.06 5.5l-.69-1.41c-.45-.93-.68-1.4-1.07-1.69a2.3 2.3 0 0 0-.27-.18C13.59 2 13.07 2 12.03 2c-1.06 0-1.59 0-2.03.23-.1.06-.2.12-.28.18-.4.31-.62.79-1.06 1.76L8.05 5.5M9.5 16.5v-6M14.5 16.5v-6"/>',
+smile:'<path d="M12 22C17.52 22 22 17.52 22 12S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10Z"/><path d="M7 9c.21.58.77 1 1.44 1 .66 0 1.23-.42 1.44-1M14.12 9c.21.58.78 1 1.44 1 .67 0 1.23-.42 1.44-1M8 15c.91 1.21 2.36 2 4 2s3.09-.79 4-2"/>'};
+const icon=n=>`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[n]}</svg>`;
+
+/* ---------- helpers ---------- */
+const ps=s=>s.split('¶').map(x=>x.trim()).filter(Boolean).map(x=>`<p>${x}</p>`).join('');
+const prose=h=>`<div class="prose">${h.includes('<p>')||h.includes('<ul>')?h:ps(h)}</div>`;
+const tag=(t,grey)=>t?`<span class="tag${grey?' on-grey':''}">${t}</span>`:'';
+function pic(name,alt,{scale=1,cls='',sizes='(min-width:1100px) 1024px, 100vw',zoom=true}={}){
+  const [w,h]=IMG[name]||[1200,800];const has900=w>1100;
+  const src=`img/${name}.webp`;const srcset=has900?`img/${name}-900.webp 900w, ${src} ${w}w`:'';
+  const style=scale!==1?` style="--w:${Math.round(w/scale)}px"`:'';
+  const im=`<img src="${src}"${srcset?` srcset="${srcset}" sizes="${sizes}"`:''} width="${w}" height="${h}" alt="${alt}" loading="lazy" decoding="async"${style} class="${cls}">`;
+  return zoom?`<button class="zoom" type="button" data-full="${src}" data-cap="${alt}" aria-label="Enlarge image: ${alt}">${im}</button>`:im}
+const sec=(inner,{grey=false,cls=''}={})=>`<section class="section${grey?' grey':''} ${cls}"><div class="wrap stack-lg">${inner}</div></section>`;
+const title=(t,kind='h3')=>kind==='display'?`<h2 class="display">${t}</h2>`:`<h2 class="h3">${t}</h2>`;
+const textSection=(eyebrow,h,p)=>`<div class="tb-split"><div class="head">${eyebrow?`<span class="eyebrow">${eyebrow}</span>`:''}<h2 class="display">${h}</h2></div>${prose(p)}</div>`;
+const textSub=(h,p)=>`<div class="tb-split"><h2 class="h3">${h}</h2>${prose(p)}</div>`;
+const textFull=(h,p)=>`<div class="stack">${h?`<h2 class="h3">${h}</h2>`:''}${prose(p)}</div>`;
+const twoParas=(a,b)=>`<div class="tb-split">${prose(a)}${prose(b)}</div>`;
+const steps=(h,items,numbered)=>`<div class="stack-lg">${h?`<h2 class="h3">${h}</h2>`:''}<div class="steps s${items.length}">${items.map(([t,b],i)=>`<div class="step">${numbered?`<span class="num">0${i+1}</span>`:''}<h3 class="h4">${t}</h3>${prose(b)}</div>`).join('')}</div></div>`;
+function card(o){
+  const {type='outlined',tagT,tagGrey,ic,h,body,body2,href,media,mediaPos,mediaScale=3,mediaAlt}=o;
+  const inner=`<div class="inner">${ic?icon(ic):''}${tag(tagT,tagGrey)}<h3 class="h4">${h}</h3>${body?prose(body+(body2?' ¶ '+body2:'')):''}${href?`<span class="action">Read the case study <span aria-hidden="true">→</span></span>`:''}</div>`;
+  const m=media?`<div class="media">${pic(media,mediaAlt||h,{scale:mediaScale,sizes:'(min-width:720px) 480px, 100vw'})}</div>`:'';
+  const pos=mediaPos||'';const cls=`card ${type}${pos==='left'||pos==='right'?' media-side '+pos:''}${pos==='end'?' media-end':''}`;
+  const content=pos==='end'?inner+m:(pos==='top'||pos==='left'?m+inner:pos==='right'?m+inner:inner);
+  return href?`<a class="${cls}" href="${href}">${content}</a>`:`<article class="${cls}">${content}</article>`}
+const grid=(cols,items)=>`<div class="grid g${cols}">${items.join('')}</div>`;
+const quote=(q,src)=>`<figure class="quote"><blockquote>${q}</blockquote>${src?`<cite>${src}</cite>`:''}</figure>`;
+function flow(label,desc,items){ // items: [text, connectorBefore('dot'|'arrow'|'line'), highlight]
+  return `<div class="flow"><div class="start"><span class="label">${label}</span><span class="line" aria-hidden="true"></span><span class="desc">${desc}</span></div><ol>${items.map(([t,c,hl],i)=>`${i?`<li class="grow" aria-hidden="true"><span class="conn ${c}"></span></li>`:''}<li><span class="pill${hl?' hl':''}">${t}</span></li>`).join('')}</ol></div>`}
+const deviceImg=(name,alt)=>`<section class="imgband"><div class="wrap"><div class="device"><div class="screen">${`<img src="img/${name}.webp" srcset="img/${name}-900.webp 900w, img/${name}.webp ${IMG[name][0]}w" sizes="(min-width:1100px) 1004px, 96vw" width="${IMG[name][0]}" height="${IMG[name][1]}" alt="${alt}" loading="lazy">`}</div></div></div></section>`;
+
+/* ---------- shared ---------- */
+const STUDIES=['human-ai','chat','setup','skill'];
+const HERO=(bg,t,title,lead,year)=>`<section class="hero" style="background-image:url(img/${bg}.webp)"><div class="hero-card">${tag(t)}<h1>${title}</h1><p class="lead">${lead}</p><p class="year">${year}</p></div></section>`;
+const industries=[["Energy","MVM","Led research, UX design, and prototyping initiatives to drive digital transformation in the energy sector, enabling residents to manage their services quickly and effortlessly."],["Telecommunications","Vodafone","Researched and tested conversational flows, improving usability and client communication in telecom services."],["Tourism","Szállás.hu","Conducted user research on vacation planning behaviors and designed a mobile feature to improve program planning."],["Education","Ixam","Contributed to the digital transformation of Hungary’s first language exam by designing the website (student journey and examiner workflows), later adapting the platform for online accessibility during COVID-19."],["NGO","Liberties","Researched user behavior and developed a subscription feature that increased recurring donations and newsletter sign-ups while ensuring compliance with strict data protection policies."],["Real estate","Datapolis","Created complete website wireframes featuring an intuitive map and advanced, data-driven search to empower users in finding their ideal property."]];
+const rrow=(date,org,role,p)=>`<div class="row"><div class="date">${date}</div><div class="stack"><div class="title">${org} – <span class="sec">${role}</span></div>${p?prose(p):''}</div></div>`;
+
+/* ---------- pages ---------- */
+const PAGES={
+home:{title:'Work',footer:null,html:()=>`
+<section class="section band"><div class="wrap stack-lg">
+  ${textSection('Latest','About Octomind','Octomind was a startup developing an AI-powered testing platform that automates test creation, execution, and maintenance for QA teams. Here are some of the projects I’ve worked on as part of this journey.')}
+  ${grid(2,[card({tagT:'Research',h:'Human–AI design guidelines',body:'While designing an AI product, we faced uncertainties about how humans and AI interact. To address this, I conducted research on AI–human behavior and developed design guidelines.',href:'#human-ai'}),
+            card({tagT:'Concept',h:'Collaborative AI chat interfaces',body:'Research on AI chat UI patterns, focusing on layouts, navigation, and interactions for technical and non-technical users.',href:'#chat'})])}
+</div></section>
+${sec(title('Archive')+grid(2,[card({type:'contained',tagT:'Product Design',tagGrey:1,h:'Setup guide redesign',body:'Redesigned the setup guide for smoother onboarding and stronger product adoption.',href:'#setup'}),
+  card({type:'contained',tagT:'Product Design',tagGrey:1,h:'Designing a skill-building platform for surgical students',body:'Designed a platform that helps surgical students practice vascular suturing with interactive 3D simulations.',href:'#skill'})]))}
+${sec(title('Industries I’ve worked across')+`<div class="rows">${industries.map(([a,b,p])=>`<div class="row"><div class="title">${a} – <span class="sec">${b}</span></div>${prose(p)}</div>`).join('')}</div>`)}`},
+
+resume:{title:'Resume',footer:{label:'Read the case study',href:'#human-ai'},html:()=>`
+${sec(title('Experience')+`<div class="rows resume">
+${rrow('December 2025 – Present','Lufthansa Systems','UX Designer (Design System)','At Lufthansa Systems, I’m part of the Design System team, supporting and evolving a shared design system used across more than 14 products. A key focus of our work is strengthening the connection between design and development by creating a more modular and scalable system, with design tokens forming the foundation for greater consistency, flexibility, and easier collaboration.')}
+${rrow('March 2024 – November 2025','Octomind','Senior UX Designer &amp; Researcher','At Octomind, I researched AI–human interactions and explored how to design intuitive AI-driven products. I initiated and grew a comprehensive flow library, mapping product journeys to ensure structured, scalable, and user-friendly experiences that support the success of AI solutions.')}
+${rrow('June 2022 – March 2024','GoTo','Product Designer','At GoTo, I contributed to developing IT management tools with a focus on Mobile Device Management. I crafted seamless user journeys, translated complex service blueprints into intuitive designs, and collaborated with development teams to ensure practical, user-centered solutions.')}
+${rrow('2021 – 2022','xLaboratories','Education Mentor')}
+${rrow('July 2020 – June 2022','Frontira','Product Designer','At Frontira, I worked across diverse industries, from healthcare to energy. I led user research, facilitated workshops, and applied structured UX methodologies, ensuring design decisions were data-driven, transparent, and aligned with both client and user needs.')}
+${rrow('July 2018 – June 2020','UX Squad','Junior Product Designer')}</div>`)}
+${sec(title('Education')+`<div class="rows resume">
+${rrow('2017 – 2020','MOME Budapest','Master’s degree, Product Design')}
+${rrow('2019','MKB Fintechlab','Design Masterclass')}
+${rrow('2018','Politecnico di Milano','Interaction Design (Erasmus)')}
+${rrow('2016 – 2017','ISI Denpasar','Indonesian Traditional Art')}
+${rrow('2015 – 2016','Hello Wood','Hungarian Summer Schools and Festivals')}
+${rrow('2013 – 2016','University of West Hungary, Institute of Applied Arts','Bachelor’s degree, Industrial and Product Design')}</div>`)}
+${sec(title('Volunteer')+`<div class="rows resume">
+${rrow('2020 – 2022','UX Budapest','Event Organizer')}
+${rrow('2018','Doers','Event Organizer')}</div>`)}`},
+
+'human-ai':{title:'Human–AI design guidelines',footer:{label:'Read next study',href:'#chat'},html:()=>`
+${HERO('bg-hero-hai','Research','Human–AI design guidelines','I’ve been building a set of design guidelines for AI products. Here, I’ll highlight two studies and walk through the documentation that supports them.','2024')}
+${sec(textSection('Study 1/2','Onboarding strategies','Should an AI product automate everything it can? Our onboarding was built on the assumption that it should. Usability testing with real users showed that this assumption did not hold.'))}
+${sec(steps('Human control vs. AI automation',[['Context','Octomind’s agent requires a single input: a URL. From it, the agent identifies the page’s purpose and generates automated tests. Users were therefore asked to provide a URL during sign-up, so test generation could start immediately.'],['Problem','Product analytics revealed a high drop-off rate shortly after sign-up. Most users left before reaching the product’s core value: AI-generated, automated end-to-end tests.'],['Hypothesis','The original onboarding aimed to demonstrate the AI’s value immediately after sign-up, expecting this to drive retention. We hypothesized that the issue lay not in the product itself, but in how the onboarding introduced it.']]))}
+${sec(title('Research','display')+textFull('','We ran mixed-method research: <b>A/B testing, plus qualitative interviews</b>. The quantitative data pointed clearly toward option B, but the interviews explained why.')+
+  `<div class="stack-lg">${flow('A)','Auto-trigger flow',[['Sign up'],['AI starts discovery','line',1],['User completes sign-up','arrow'],['Sign in','arrow'],['AI result is in','arrow']])}${flow('B)','User triggers the AI',[['Sign up'],['Sign in','arrow'],['User triggers AI discovery','arrow',1],['AI result is in','arrow']])}</div>`)}
+${sec(textFull('User control over automation','The results showed that <b>allowing users to initiate the onboarding flow was more effective than automation.</b> ¶ With automation, users didn’t understand what triggered actions or what was happening in the background. Since they had no prior experience with our tool, or with AI in a testing environment, they didn’t know what to expect. Many began clicking around immediately, following their instinct to explore. ¶ <b>Our key learning was that we initially assumed users simply wanted perfect results with minimal effort. In reality, if they are not actively involved in the process, they lose trust and engagement.</b>')+
+  grid(3,[card({type:'contained',ic:'alert',h:'Auto-trigger created confusion',body:'Users didn’t understand what had happened or why. Without context, the result felt random, not helpful.'}),card({type:'contained',ic:'frown',h:'Passive users disengaged faster',body:'When the AI acted on their behalf without involvement, users felt like spectators. They didn’t feel ownership over the outcome.'}),card({type:'contained',ic:'thumb',h:'Initiation builds trust',body:'Users who triggered the process themselves reported higher confidence in the result, even when the output was identical.'})]))}
+${sec(title('Design guidelines','display')+grid(2,[['Guideline 1','Let them explore','Allow freedom to click around, supported by gentle nudges when needed.'],['Guideline 2','Show the state','Provide clear context about what the product is and how it helps.'],['Guideline 3','Show, don’t explain','Use examples instead of instructions (e.g., show a prompt rather than describing how to write one).'],['Guideline 4','Guide the journey','Always suggest the next step to keep users moving forward.'],['Guideline 5','Set expectations','Be transparent about what the AI can and cannot do.'],['Guideline 6','Use empty states wisely','Provide helpful, informative placeholders until real data is available.']].map(([t,h,b])=>card({tagT:t,h,body:b}))),{grey:true})}
+${sec(textSection('Study 2/2','AI wait times','AI-driven products often come with long processing times. In early versions, our interface tried to compensate with a growing number of loading indicators – an experience the team came to call the “loading Christmas tree”.'))}
+${sec(steps('How do we keep users engaged?',[['Context','Octomind relies on AI for nearly every core task, from discovering test cases to generating tests. As a result, users regularly had to wait before seeing any outcome of their actions.'],['Problem','Product analytics showed that users who completed sign-up dropped off once they started discovering test cases themselves. Most of them left during test generation – the step with the longest wait time.'],['Hypothesis','Our initial hypothesis was that users left because the process took too long. Reducing processing time, however, did not improve retention – indicating that duration alone was not the root cause.']]))}
+${sec(title('Research','display')+textFull('','As our research method, we continuously monitored <b>screen recordings in PostHog</b>, explored the topic during <b>user interviews, and conducted desk research on user waiting behavior.</b> ¶ From PostHog, we observed that users were dropping out during wait times, but we didn’t know why. To dig deeper, I conducted desk research, reviewing studies and best practices on how others handle waiting experiences. Here’s what I found:'))}
+${sec(quote('<i>“It’s not the length of the queue that matters</i> – <b>it’s how people feel while they’re in it.”</b>','Source: The psychology of queuing revealed in 6 simple rules'),{grey:true})}
+${sec(textFull('Users don’t want their time wasted','User feedback aligned with our desk research findings: <b>wait times didn’t bother them, as they naturally expected AI tools to be slower. </b>What they <b>did expect, however, was that this time shouldn’t feel wasted.</b> They wanted the option to do something else while waiting, and not be left completely in the dark, because unexplained waits feel longer and often lead to stress and anxiety.')+
+  grid(3,[card({type:'contained',ic:'question',h:'Uncertainty is the real enemy',body:'<i>“I don’t know if this is working”</i> triggered drop-off far more than <i>“this is taking a while.”</i>'}),card({type:'contained',ic:'trash',h:'Idle time feels wasted',body:'Users with nothing to do during a wait perceived it as significantly longer, and rated the product lower.'}),card({type:'contained',ic:'smile',h:'Informed users stay',body:'A simple progress message (“analyzing your data”) dramatically improved retention and satisfaction scores.'})]))}
+${sec(title('Design guidelines','display')+grid(2,[['Guideline 1','Less is more','Avoid multiple spinners and flashy indicators. Use one consistent pattern to signal progress.'],['Guideline 2','Let users do something else','Offer in-app, Slack, or email notifications (used carefully to avoid spam) or provide alternative tasks within the app.'],['Guideline 3','Use waiting time to educate','Share helpful product tips or new features, but keep content fresh to prevent repetition and boredom.'],['Guideline 4','Explain what’s happening','Even if exact details aren’t available, provide insights into what the AI might be processing to reduce uncertainty.']].map(([t,h,b])=>card({tagT:t,h,body:b}))),{grey:true})}
+${sec(textSection('','Documentation','When I began working on an AI product, I realized the need for a system to support continuous research and make information easy to retrieve when solving problems. To address this, I built a documentation system that is interconnected, easy to maintain, and accessible for everyone on the team.')+
+  grid(3,[card({type:'contained',tagT:'Dovetail',tagGrey:1,h:'Dovetail for managing interviews',body:'Used to transcribe interviews, tag insights, uncover patterns, and build personas.'}),card({type:'contained',tagT:'Notion',tagGrey:1,h:'Notion for research management',body:'I used it to centralize all research materials. With Notion AI, I could quickly summarize findings, search across topics, and streamline the creation of presentations.'}),card({type:'contained',tagT:'FigJam',tagGrey:1,h:'Flow library in FigJam',body:'I created and maintained a comprehensive flow library in FigJam containing all product flows. ¶ Since designing flows is one of the most critical aspects of AI product design, this system helped us manage complexity, consider multiple outcomes, and keep technical details aligned with user journeys.'})]))}`},
+
+chat:{title:'Collaborative AI chat interfaces',footer:{label:'Read next study',href:'#setup'},html:()=>`
+${HERO('bg-hero-chat','Concept','Collaborative AI chat interfaces','In this case study, I’ll walk you through an experiment exploring how Octomind might work if redesigned with a chat-based interface.','2025')}
+${sec(steps('To chat or not to chat',[['Context','From the start, the Octomind team was divided on a core interaction question: should AI interfaces be fully chat-based, or stay closer to traditional, structured user flows built on buttons and predefined interactions? The product was built on the latter.'],['Problem','As the product evolved, the limits of the traditional interface became clear. It could not provide enough context for users to understand what the AI was doing, and it was difficult to extend with new agents, tools, or meta-prompting capabilities.'],['Hypothesis','We imagined that a chat-based interface could address both issues: giving users more transparency into the AI’s process, while offering a more flexible foundation for future capabilities – without losing the clarity of structured interactions.']])+
+  `<div class="grid g2"><figure>${pic('wf-current','Current view',{cls:'frame',sizes:'(min-width:720px) 504px, 100vw'})}<figcaption>Current view</figcaption></figure><figure>${pic('wf-chat','Chat concept',{cls:'frame',sizes:'(min-width:720px) 504px, 100vw'})}<figcaption>Chat concept</figcaption></figure></div>`)}
+${sec(title('Research','display')+twoParas('To find answers, we ran several smaller research studies from different perspectives, each exploring key questions. For example: how might AI–human co-creation look? What do people actually expect from these tools? ¶ Along the way, <b>we conducted user tests on prototypes and examined market trends to see how other AI products are approaching the same challenge.</b>','<p>In interviews, we asked users about:</p><ul><li>the AI tools they currently use,</li><li>what they like or dislike,</li><li>how these tools support their goals, and the usability challenges they face.</li></ul><p>Participants compared chat-based interfaces (like ChatGPT) with tools that use predefined interactions (like Notion).</p>'))}
+${sec(quote('Overall, users felt chat interfaces worked well for quickly dumping ideas, but became cumbersome when polishing them: context was lost, and typing was inconvenient.','Little footnote: interestingly, ChatGPT spotted the same issue. They solved it by introducing a feature that lets users highlight text in a response and branch off into a new task.'),{grey:true})}
+${sec(textFull('Towards hybrid co-creation interfaces','<b>What we need is a form of co-creation, combining the flexibility of a chat interface with the precision of traditional editing methods.</b> ¶ This hybrid approach allows users to brainstorm ideas freely in chat, while still having the structure and control to refine, adjust, and polish their work effectively.'))}
+${sec(title('Design exploration','display')+twoParas('To design the collaborative AI chat interface, I researched existing tools on the market to see how they address similar challenges. I focused on products with comparable UI needs: those requiring space for both code and preview. This included tools like Figma Make, Builder.io, Claude, and Lovable.','<p>Focus areas:</p><ul><li>Overall layout</li><li>Navigation patterns</li><li>Chat structure: input field, controls, messaging</li><li>Integrating manual editing with chat</li></ul>'))}
+${sec(grid(2,[card({type:'filled',mediaPos:'top',media:'ill-two-column',tagT:'Layout',h:'Two-column layout',body:'Most tools I studied followed a simple two-column layout: one side for chat, the other for preview. ¶ Whenever additional views were needed, users had to open another section of the interface: sometimes a rare extra column, more often a horizontal split. ¶ Users could also expand a single view to full screen, letting the interface adapt to whatever was most important in that moment of the journey.'}),
+  card({type:'filled',mediaPos:'top',media:'ill-navigation',tagT:'Navigation',h:'One project at a time',body:'To maximize focus, these products avoid cluttered top-bar navigation. ¶ Instead, users start from a landing page or dashboard, open a project, and see only the global tools relevant to it, like publish, history, or view options. ¶ To switch projects, they return to the dashboard via the logo in the corner or use simple tabs in the product or browser.'})]),{grey:true})}
+${sec(`<div class="stack">${tag('Chat structure')}</div>`+textFull('Prompt field + tool center','In most tools, the chat takes up the full vertical height on one side of the screen, giving it presence and focus. <b>Messages stack from the top down, while the input field sits anchored at the bottom.</b> ¶ But this input isn’t just a simple text box; <b>it’s a robust workspace.</b> The top half is for writing prompts, while the bottom half provides tools for richer interaction: <b>context management, model switching, editing options, and ways to connect directly with the preview.</b>')+
+  `<div class="legend"><div class="pic">${pic('ill-chat-structure','Chat input with numbered parts',{sizes:'(min-width:720px) 504px, 100vw'})}</div><ol>${['Place for additional information','Prompt field','Tool calls','Add files and other material','Chat mode','Send'].map((t,i)=>`<li><span class="badge">${i+1}</span>${t}</li>`).join('')}</ol></div>`)}
+${sec(textFull('Messages','When it comes to chat interfaces, the way messages are displayed plays a big role in how users experience the product. What I observed is that user messages remain fairly minimal and functional, while agent messages have evolved into richer, more structured categories that shape the overall interaction. ¶ Agent messages are much more elaborate and are designed to guide, inform, and sometimes demand action. They typically fall into three categories:')+
+  `<div class="grid">${[
+  ['ill-simple-message','Simple agent messages','These are the most basic outputs: plain text aligned to the left side, without a background, stretching across the available space. ¶ To add utility, they often include small interactive elements such as a like/dislike icon for feedback and a copy button so users can quickly reuse or share the response.'],
+  ['ill-generating','Collapsible messages','This type of message addresses a common challenge: <b>how to convey complex background processes without overwhelming the user?</b> ¶ Collapsible messages contain dense information, often reasoning steps or tool calls made by the AI. ¶ <b>By default, this information is hidden behind a collapsible panel, letting curious users dive deeper when needed, </b>while casual users can skip over it. This balances transparency with usability, ensuring the interface doesn’t feel overloaded.'],
+  ['ill-ask-help','Actionable messages','These are perhaps the most impactful. <b>Actionable messages invite users to take the next step in the process.</b> ¶ They may involve managing versions, clicking buttons that link to external information, reviewing error notifications, or responding to input requests. ¶ This <b>transforms the chat from a static exchange into an interactive workflow, where the agent not only communicates but also actively directs the user’s actions</b>.']].map(([m,h,b])=>card({mediaPos:'left',media:m,h,body:b})).join('')}</div>`)}
+${sec(textSub('Octomind-specific features','These findings inspired us to rethink some of Octomind’s challenges. We envisioned a dedicated toolset embedded directly into the chat, designed to handle error messages, manage generation, request user input, and even support test case planning.')+
+  grid(3,[card({mediaPos:'end',media:'ill-element-select',tagT:'Step 1',h:'Select',body:'In the Preview or Code view, the user selects the item or element to refine.'}),card({mediaPos:'end',media:'ill-locator-editor',tagT:'Step 2',h:'Edit',body:'The user decides whether to make changes through prompting or by switching to a traditional editor.'}),card({mediaPos:'end',media:'ill-manual-edit',tagT:'Step 3',h:'Save',body:'The edit is captured back in the chat.'})]))}
+${sec(`<div class="grid">${[
+  ['ill-test-plan','Better test planning','A chat interface could support meta-prompting, guiding users to craft better test prompts and improving generation quality.'],
+  ['ill-error','Turning AI errors into fixable steps','One of our biggest challenges is when the <b>AI fails to produce a good end-to-end test</b>. There can be many reasons behind this, and while we can often detect the issue, it’s difficult for users to take control and fix it. ¶ <b>This solution aims to surface the problem clearly and guide the user into a “fixing mode”, making the recovery process more intuitive and manageable.</b>'],
+  ['ill-version','Solving version drift','Another challenge we face is version handling. <b>Today, every test begins with a prompt</b>, from which test steps are generated and eventually validated. ¶ <b>The problem arises when a user edits a step: the changes don’t sync back to the original prompt.</b> Over time, this creates branching versions where the prompt and the steps no longer align. ¶ <b>This solution connects prompts, steps, runs, and validation data into a single versioned package</b>, one that can be filtered, compared, and restored whenever needed.']].map(([m,h,b])=>card({mediaPos:'left',media:m,h,body:b})).join('')}</div>`)}
+${deviceImg('wf-chat','Chat concept of the Octomind test editor')}`},
+
+setup:{title:'Setup guide redesign',footer:{label:'Read next study',href:'#skill'},html:()=>`
+${HERO('bg-hero-setup','Product Design','Setup guide redesign','This project focused on redesigning the MDM setup guide to make configuration easier, drive engagement, and boost customer conversion.','2023')}
+${sec(steps('From complexity to clarity',[['Context','<p>Mobile Device Management (MDM) is a highly complex task that impacts countless companies. Any organization that issues mobile devices to employees:</p><ul><li>must enforce rules,</li><li>manage apps,</li><li>and apply restrictions across Android, iOS, and Windows.</li></ul>'],['Problem','Whether the user is a seasoned IT professional or a company owner with little technical knowledge, they need to set up devices remotely, efficiently, and <b>without a steep learning curve</b>.'],['Research question','How might we help users quickly master Mobile Device Management?']]))}
+${sec(steps('Process',[['Explore','Researched the current onboarding flow, conducted a heuristic evaluation, and defined design principles.'],['Define','Interviewed users, analyzed patterns, and mapped personas.'],['Validate &amp; iterate','Prototyped, tested internally with both IT professionals and customer success managers, and refined flows.'],['Hand-off','Delivered polished flows and UI with templates for future consistency.']],true))}
+${sec(title('Research','display')+twoParas('We followed an iterative research approach. First, we tested the existing setup guide with users to establish a baseline. Based on their feedback, we refined the guide and tested the updated version again – repeating the cycle until the key issues were resolved.','In parallel, we conducted desk research on how people process information and turn it into action – insights that directly shaped the structure and wording of the new guide.'))}
+${sec(title('Key research insights')+grid(2,[['Insight 1','Users drop off early','when they don’t understand why a step is necessary.'],['Insight 2','Following the guide felt like “following a map”','users reached the goal but couldn’t recall how.'],['Insight 3','Non-professionals need more help','than experts, so the setup guide needs to be primarily tailored to them.'],['Insight 4','People scan information rather than read it','requiring concise content, visual cues, and progressive disclosure.']].map(([t,h,b])=>card({tagT:t,h,body:b}))),{grey:true})}
+${sec(title('Design guidelines')+grid(2,[['setup-why','Guideline 1','Explain the “why”','Added contextual explanations and a “Benefit” section so users understand the purpose behind each step.'],['setup-progressive','Guideline 2','Use progressive disclosure','Guided users from easy tasks to harder ones as they became ready.'],['setup-cognitive','Guideline 3','Reduce cognitive load','Grouped and broke down tasks with a clear progress bar and simple step indicators.'],['setup-positive','Guideline 4','Positive reinforcement','Added completion indicators, badges, and “aha moment” tasks to celebrate progress and motivate users.']].map(([m,t,h,b])=>card({mediaPos:'end',media:m,tagT:t,h,body:b}))))}
+${sec(textSub('Result','User testing confirmed that the redesigned flow <b>improved clarity and engagement, especially for non-professionals.</b> Users felt more confident and motivated through progressive guidance, while engagement elements reassured them they were on the right track.'))}
+<section class="imgband" aria-label="Setup guide prototype"><div class="wrap"><div class="proto" id="proto"><div class="device"><div class="screen" id="proto-screen"></div></div>
+<div class="proto-bar"><button class="ctl" type="button" id="proto-prev" aria-label="Previous screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><div class="dots" id="proto-dots"></div><button class="ctl" type="button" id="proto-next" aria-label="Next screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div></div></div></section>`,after:initProto},
+
+skill:{title:'Skill-building platform for surgical students',footer:{label:'Read next study',href:'#human-ai'},html:()=>`
+${HERO('bg-hero-skill','Product Design','Skill-building platform for surgical students','We designed a landing page and web app to help surgical students practice vascular suturing with 3D models.','2021')}
+${sec(steps('Designing within a complex medical ecosystem',[['Context','The client developed a hands-on training method that helps surgical students master anastomosis – joining two vessels or sections of bowel. Better technique means sutures that hold longer and safer outcomes for patients.'],['Problem','The platform itself was only one piece. The experience also relied on 3D models, shipping logistics, data evaluation, the website, e-learning content, and an AR app, coordinated with distributors across several countries and shaped by the strict requirements of the medical field.'],['Research question','How might we create a seamless learning experience that keeps students focused on mastering the technique, from unboxing the training kit to their final evaluation, while balancing the medical, technical, and logistical demands of a multi-stakeholder ecosystem?']]))}
+${sec(textSub('The service','The offering <b>combines physical and digital components</b> to create a realistic training experience for surgical students:')+
+  grid(2,[card({tagT:'Physical',h:'Training kit',body:'<b>Silicone vessels</b> behave like real tissue: they stretch, tear, and react to pressure just as they would during surgery.',body2:'<b>3D-printed models</b> recreate surgical settings with high fidelity, so every practice session feels close to the real thing.'}),card({tagT:'Digital',h:'Learning platform',body:'<b>Results analysis</b> recreates the exact 3D morphology of each vessel and runs fluid-dynamics simulations to evaluate every case.',body2:'<b>Webinars &amp; video library</b> give students on-demand access to learning materials whenever they need them.'})]))}
+${sec(title('Research','display')+twoParas('Research took longer than usual, for two reasons. The ecosystem was complex, so we had to speak with every stakeholder involved. And medical professionals are hard to reach: their busy schedules leave little room for interviews.','We interviewed distributors in Japan and students in Germany to understand their context. The resulting service map brought structure to the complexity, revealed key touchpoints, and showed the client where the biggest gaps were.'))}
+${sec(title('Understanding the user')+grid(2,[['Insight 1','Professional trust','Only validated tools matter; products must be published in reputable journals or presented at major congresses.'],['Insight 2','Competitiveness','Surgeons are highly competitive and measure success against peers.'],['Insight 3','Evaluation gap','Users struggled to understand the scores they received for a suture: what the score meant, what mistakes they made, and how they could improve.'],['Insight 4','Complexity struggles','Users found the service overly complicated and time-consuming to understand.']].map(([t,h,b])=>card({tagT:t,h,body:b}))),{grey:true})}
+${sec(textFull('Service mapping evolution: from present to ideal','In our service blueprint, we mapped user needs across pre-usage, usage, and post-usage phases, capturing every touchpoint in the YourAnastomosis journey. ¶ The analysis revealed <b>hidden manual interruptions that disrupted the flow and left users uncertain about what would happen next</b>. These issues surfaced most clearly during registration, vessel registration, and evaluation.')+
+  `<figure><div class="scroll-x"><div class="wide">${pic('skill-blueprint','Service blueprint of the YourAnastomosis journey',{sizes:'(min-width:1100px) 1024px, 880px'})}</div></div><figcaption class="hint">Swipe to see the full blueprint, or tap it to zoom.</figcaption></figure>`)}
+${sec(title('Improved flows')+`<div class="grid">${card({mediaPos:'right',media:'skill-flow-registration',h:'New registration flow',body:'During exploration, our <b>research revealed multiple personas and distinct user journeys</b>, complexities the client hadn’t fully recognized. To address them, we expanded the scope, creating tailored registration routes for each scenario. This ensured every user, regardless of background, could complete the process confidently.'})}${card({mediaPos:'right',media:'skill-flow-return',h:'Digitizing manual background processes',body:'<b>Return vessel to YourAnastomosis</b> ¶ Previously, vessel returns were handled manually through calls and scheduling, making the process slow and unclear. ¶ <b>We introduced a digital return system</b> where users request pickups online, choose dates and locations, and get instant tracking. This streamlined logistics while giving users clarity and control.'})}</div>`)}
+${sec(textSub('Implementation with a journey focus','<p>Users often struggled to know what to do and when to do it. To remove this uncertainty, we redesigned the experience with a journey-focused approach, ensuring clarity at every step.</p><p>We achieved this by:</p><ul><li>Delivering relevant information at the right place and time</li><li>Guiding users seamlessly to their next step</li><li>Providing continuous feedback to build confidence and momentum</li></ul>'))}
+<section class="imgband plain" aria-label="Progress screens"><div class="wrap"><div class="proto-bar strip-bar"><button class="ctl" type="button" id="strip-prev" aria-label="Previous illustration"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><div class="dots" id="strip-dots">${[1,2,3].map(i=>`<button type="button" aria-label="Illustration ${i}"></button>`).join('')}</div><button class="ctl" type="button" id="strip-next" aria-label="Next illustration"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="strip" id="strip">${[1,2,3].map(i=>`<figure>${pic('skill-progress-'+i,['Progress: get your box','Progress: box shipped','Progress: time to practice'][i-1],{sizes:'(min-width:720px) 331px, 78vw'})}</figure>`).join('')}</div></div></section>`,after:initStrip}
+};
+
+/* ---------- prototype carousel ---------- */
+const SCREENS=['With button','Task is done','Trophy','Setup guide assistant + onboarding','With small cards','Premium feature','Alert (can’t do the task)','Info banner'];
+let protoTimer=null;
+function initProto(){
+  const box=document.getElementById('proto-screen');if(!box)return;
+  box.innerHTML=SCREENS.map((n,i)=>`<img src="img/screen-${i+1}.webp?v=2" srcset="img/screen-${i+1}-900.webp?v=2 900w, img/screen-${i+1}.webp?v=2 1928w" sizes="(min-width:1100px) 1004px, 96vw" width="1928" height="1283" alt="Setup guide screen: ${n}" ${i?'loading="lazy"':''} class="${i?'':'on'}">`).join('');
+  const imgs=[...box.querySelectorAll('img')],dots=document.getElementById('proto-dots');
+  dots.innerHTML=SCREENS.map((n,i)=>`<button type="button" aria-label="Screen ${i+1}: ${n}"></button>`).join('');
+  const db=[...dots.children];let cur=0;
+  function show(i){cur=(i+SCREENS.length)%SCREENS.length;imgs.forEach((im,k)=>im.classList.toggle('on',k===cur));db.forEach((d,k)=>d.setAttribute('aria-current',k===cur?'true':'false'))}
+  document.getElementById('proto-prev').onclick=()=>show(cur-1);
+  document.getElementById('proto-next').onclick=()=>show(cur+1);
+  db.forEach((d,k)=>d.onclick=()=>show(k));
+  let sx=null;box.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});box.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)show(cur+(dx<0?1:-1));sx=null});
+  show(0);
+}
+function initStrip(){const s=document.getElementById('strip'),d=document.getElementById('strip-dots');if(!s)return;const db=[...d.children],n=db.length;let cur=0;
+  const mark=i=>{cur=i;db.forEach((x,k)=>x.setAttribute('aria-current',k===i?'true':'false'))};
+  const go=i=>{i=(i+n)%n;s.scrollTo({left:i*s.clientWidth});mark(i)};
+  document.getElementById('strip-prev').onclick=()=>go(cur-1);document.getElementById('strip-next').onclick=()=>go(cur+1);db.forEach((x,k)=>x.onclick=()=>go(k));
+  s.addEventListener('scroll',()=>{const i=Math.round(s.scrollLeft/Math.max(1,s.clientWidth));if(i!==cur)mark(i)},{passive:true});mark(0)}
+
+/* ---------- footer ---------- */
+function renderFooter(f){
+  document.getElementById('footer').innerHTML=`<div class="wrap"><div class="hello"><h2 class="h3">Hi, I’m Anikó, nice to meet you!</h2><div class="prose"><p>I’m focused on turning complex problems into simple, user-friendly designs that create innovative digital experiences.</p></div>${f?`<a class="btn-dark" href="${f.href}">${f.label} <span aria-hidden="true">→</span></a>`:''}</div><div class="contact"><h2 class="h5">Contact</h2><div class="lines"><div class="cline"><span class="cval">+36 20 481 2205</span><button type="button" class="copy" data-copy="+36 20 481 2205" title="Copy" aria-label="Copy phone number"><svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></div><div class="cline"><span class="cval">biroanikoo@gmail.com</span><button type="button" class="copy" data-copy="biroanikoo@gmail.com" title="Copy" aria-label="Copy email address"><svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></div></div></div></div>`}
+
+
+/* ---------- copy contact ---------- */
+document.addEventListener('click',async e=>{const b=e.target.closest('.copy');if(!b)return;const v=b.dataset.copy;let ok=false;
+  try{await navigator.clipboard.writeText(v);ok=true}catch(_){try{const t=document.createElement('textarea');t.value=v;t.setAttribute('readonly','');t.style.cssText='position:fixed;opacity:0;left:-9999px';document.body.appendChild(t);t.select();t.setSelectionRange(0,v.length);ok=document.execCommand('copy');t.remove()}catch(_){}}
+  if(!ok){const r=document.createRange();r.selectNodeContents(b.previousElementSibling);const sel=getSelection();sel.removeAllRanges();sel.addRange(r)}
+  if(ok){b.classList.add('done');b.title='Copied';clearTimeout(b._t);b._t=setTimeout(()=>{b.classList.remove('done');b.title='Copy'},1600)}});
+/* ---------- router ---------- */
+function route(){
+  clearTimeout(protoTimer);
+  let key=(location.hash||'#home').slice(1);if(!PAGES[key])key='home';
+  const p=PAGES[key];const main=document.getElementById('main');
+  main.innerHTML=p.html();main.classList.remove('page-enter');void main.offsetWidth;main.classList.add('page-enter');
+  renderFooter(p.footer);
+  document.querySelectorAll('[data-nav]').forEach(a=>{const on=(a.dataset.nav==='resume')===(key==='resume');a.toggleAttribute('aria-current',on);if(on)a.setAttribute('aria-current','page')});
+  document.title=key==='home'?'Anikó Biró Portfolio':`${p.title.replace(/<[^>]+>/g,'')} – Anikó Biró`;
+  window.scrollTo(0,0);
+  if(p.after)p.after();
+}
+window.addEventListener('hashchange',route);
+route();
+const hdr=document.querySelector('.site-header');window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>4),{passive:true});
+
+/* ---------- lightbox ---------- */
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img'),lbView=document.getElementById('lb-view');let lastFocus=null;
+function openLb(src,cap,from){lastFocus=from;lbImg.src=src;lbImg.alt=cap;document.getElementById('lb-cap').textContent=cap;lbView.classList.add('fit');lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lb-close').focus()}
+document.addEventListener('click',e=>{const z=e.target.closest('.zoom');if(!z)return;openLb(z.dataset.full,z.dataset.cap,z)});
+function closeLb(){lb.hidden=true;document.body.style.overflow='';lbImg.removeAttribute('src');lastFocus&&lastFocus.focus()}
+document.getElementById('lb-close').onclick=closeLb;
+document.getElementById('lb-zoom').onclick=()=>lbView.classList.toggle('fit');
+lbImg.onclick=()=>lbView.classList.toggle('fit');
+lb.addEventListener('click',e=>{if(e.target===lbView)closeLb()});
+document.addEventListener('keydown',e=>{if(!lb.hidden&&e.key==='Escape')closeLb()});
 </script>
 
 </body>
