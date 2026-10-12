@@ -67,6 +67,8 @@ Site copy is English.
    - Check every page you touched at about 390px and about 1280px wide.
    - Check the browser console for errors.
 3. Commit with a short message describing the visible change, then push to `main`. That is the deploy.
+   - **Always commit and push directly to `main`.** Do not create a feature branch or a pull request unless the owner asks for one. She wants every change live right away, and GitHub Pages only deploys `main`.
+   - If the session started on another branch, still push the work to `main` (for example `git push origin HEAD:main`, after rebasing on `origin/main`).
 4. Tell the owner what changed, and that a hard refresh (Ctrl/Cmd+Shift+R) may be needed.
 
 Never paste a partial `index.html` or replace the script with placeholder comments such as "rest unchanged". The page renders only from the script, so a truncated file leaves only the header on screen.
