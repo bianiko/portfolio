@@ -29,7 +29,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:var(--body);line-height:24px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:var(--body);line-height:24px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit}
 img{display:block;max-width:100%;height:auto}
 b,strong{font-weight:600;color:var(--fg)}
@@ -80,9 +80,9 @@ p{margin:0}
 
 /* hero (case study) */
 .hero{position:relative;background:var(--fg) center/cover no-repeat;padding:16px}
-@media (min-width:720px){.hero{padding:32px;min-height:600px;display:flex}}
+@media (min-width:720px){.hero{padding:32px max(var(--gutter), calc((100% - var(--content)) / 2));min-height:600px;display:flex}}
 .hero-card{background:var(--bg);padding:32px 20px;display:grid;gap:16px;align-content:start}
-@media (min-width:720px){.hero-card{width:66.6667%;padding:32px 64px 64px max(32px, calc(var(--gutter) - 32px))}}
+@media (min-width:720px){.hero-card{width:66.6667%;padding:32px 64px;align-content:center}}
 .hero-card h1{font-size:var(--display);line-height:var(--display-lh);font-weight:700;max-width:16ch}
 .hero-card .lead{color:var(--muted);max-width:600px}
 .hero-card .year{font-family:var(--serif);font-weight:600;color:var(--muted)}
